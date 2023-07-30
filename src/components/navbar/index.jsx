@@ -14,6 +14,7 @@ import dinner from "../../assets/images/dinner.png";
 import snack from "../../assets/images/snack.png";
 
 import "./index.css";
+import { Link } from "react-router-dom";
 
 const products = [
   {
@@ -24,7 +25,7 @@ const products = [
   },
   {
     name: "Lunch",
-    description: "ndulge in a delicious midday escape with our lunch options.",
+    description: "Indulge in a delicious midday escape with our lunch options",
     href: "#",
     icon: lunch,
   },
@@ -142,9 +143,12 @@ export default function Navbar() {
             </Transition>
           </Popover>
 
-          <a href="/" className="text-sm font-semibold leading-6 text-gray-900">
+          <Link
+            to="/plans"
+            className="text-sm font-semibold leading-6 text-gray-900"
+          >
             Our Plans
-          </a>
+          </Link>
           <a href="/" className="text-sm font-semibold leading-6 text-gray-900">
             Marketplace
           </a>
@@ -208,12 +212,12 @@ export default function Navbar() {
                     </>
                   )}
                 </Disclosure>
-                <a
-                  href="/"
+                <Link
+                  to="plans"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Our Plans
-                </a>
+                </Link>
                 <a
                   href="/"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"

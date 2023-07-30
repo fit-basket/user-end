@@ -15,3 +15,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Remove focus styling for all elements */
+*:focus-visible {
+  outline: none;
+}
