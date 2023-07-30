@@ -6,20 +6,30 @@ const SubscriptionContext = createContext();
 // Context provider component
 const SubscriptionContextProvider = ({ children }) => {
   // State and functions to be shared through the context
-  const [subscriptionData, setSubscriptionData] = useState([1, 2]);
+  const [subscriptionData, setSubscriptionData] = useState([]);
+  const [priceTotal, setPriceTotal] = useState(0);
 
-  const handlePlanUpdate = (id) => {
+  const handlePlanUpdate = (id, price) => {
+    console.log("first", priceTotal, price);
     if (subscriptionData.includes(id)) {
       setSubscriptionData(subscriptionData.filter((item) => item !== id));
+      setPriceTotal(priceTotal - price);
     } else {
       setSubscriptionData([...subscriptionData, id]);
+      setPriceTotal(priceTotal + price);
     }
   };
 
   // The data and functions we want to share are provided through the value prop
   return (
     <SubscriptionContext.Provider
-      value={{ subscriptionData, handlePlanUpdate, setSubscriptionData }}
+      value={{
+        subscriptionData,
+        handlePlanUpdate,
+        setSubscriptionData,
+        priceTotal,
+        setPriceTotal,
+      }}
     >
       {children}
     </SubscriptionContext.Provider>

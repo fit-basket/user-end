@@ -20,6 +20,10 @@ module.exports = {
         dark: "#f43f5e",
         main: "#fb7185",
       },
+      gray: {
+        300: "rgb(209 213 219)",
+        500: "rgb(107 114 128)",
+      },
     },
   },
   darkMode: "class",

@@ -45,7 +45,7 @@ function PricingCard({ head, price, desc, isChecked, features, id }) {
         ))}
       </ul>
       <button
-        onClick={() => handlePlanUpdate(id)}
+        onClick={() => handlePlanUpdate(id, price)}
         className={`text-white  font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white  dark:focus:ring-button-dark 
         // ${
           //   subscriptionData.includes(id)
