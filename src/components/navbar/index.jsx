@@ -1,11 +1,7 @@
-import { Fragment, useState } from "react";
+import { Fragment, useContext, useState } from "react";
 import { Dialog, Disclosure, Popover, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import {
-  ChevronDownIcon,
-  PhoneIcon,
-  PlayCircleIcon,
-} from "@heroicons/react/20/solid";
+import { ChevronDownIcon, ShoppingCartIcon } from "@heroicons/react/20/solid";
 
 import logo from "../../assets/logo/logo.png";
 import breakfast from "../../assets/images/breakfast.png";
@@ -15,6 +11,7 @@ import snack from "../../assets/images/snack.png";
 
 import "./index.css";
 import { Link } from "react-router-dom";
+import { SubscriptionContext } from "../../context/SubscriptionContext";
 
 const products = [
   {
@@ -43,30 +40,31 @@ const products = [
     icon: dinner,
   },
 ];
-const callsToAction = [
-  { name: "Watch demo", href: "#", icon: PlayCircleIcon },
-  { name: "Contact sales", href: "#", icon: PhoneIcon },
-];
+// const callsToAction = [
+//   { name: "Watch demo", href: "#", icon: PlayCircleIcon },
+//   { name: "Contact sales", href: "#", icon: PhoneIcon },
+// ];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Navbar() {
+export default function Navbar({ setIsCheckout }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { subscriptionData } = useContext(SubscriptionContext);
 
   return (
     <header className="bg-white">
       <nav
-        className="mx-auto flex max-w-7xl items-center justify-between lg:px-8"
+        className="mx-auto flex max-w-7xl items-center justify-between px-8"
         aria-label="Global"
       >
-        <div className="flex lg:flex-1">
+        <Link to="/" className="flex lg:flex-1">
           {/* <a href="#" className="-m-1.5 p-1.5"> */}
           <span className="sr-only">Your Company</span>
           <img className="h-8 w-auto logo" src={logo} alt="" />
           {/* </a> */}
-        </div>
+        </Link>
         <div className="flex lg:hidden">
           <button
             type="button"
@@ -96,7 +94,7 @@ export default function Navbar() {
               leaveFrom="opacity-100 translate-y-0"
               leaveTo="opacity-0 translate-y-1"
             >
-              <Popover.Panel className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5">
+              <Popover.Panel className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-white ring-gray-900/5">
                 <div className="p-4">
                   {products.map((item) => (
                     <div
@@ -154,6 +152,18 @@ export default function Navbar() {
           </a>
         </Popover.Group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+          <div
+            class="relative cursor-pointer mr-5"
+            onClick={() => setIsCheckout(true)}
+          >
+            <ShoppingCartIcon
+              className="h-5 w-5 flex-none text-gray-400"
+              aria-hidden="true"
+            />
+            <div class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-danger-main border-2 border-white rounded-full -top-3 -right-4 dark:border-gray-900">
+              {subscriptionData.length}
+            </div>
+          </div>{" "}
           <a href="/" className="text-sm font-semibold leading-6 text-gray-900">
             Log in <span aria-hidden="true">&rarr;</span>
           </a>
@@ -198,7 +208,7 @@ export default function Navbar() {
                         />
                       </Disclosure.Button>
                       <Disclosure.Panel className="mt-2 space-y-2">
-                        {[...products, ...callsToAction].map((item) => (
+                        {[...products].map((item) => (
                           <Disclosure.Button
                             key={item.name}
                             as="a"
@@ -226,6 +236,18 @@ export default function Navbar() {
                 </a>
               </div>
               <div className="py-6">
+                <div
+                  class="relative cursor-pointer"
+                  onClick={() => setIsCheckout(true)}
+                >
+                  <ShoppingCartIcon
+                    className="h-5 w-5 flex-none text-gray-400"
+                    aria-hidden="true"
+                  />
+                  <div class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-danger-main border-2 border-white rounded-full -top-2 left-4 dark:border-gray-900">
+                    {subscriptionData.length}
+                  </div>
+                </div>{" "}
                 <a
                   href="/"
                   className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"

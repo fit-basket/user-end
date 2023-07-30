@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import PricingCard from "./PricingCard";
 import { SubscriptionContext } from "../../context/SubscriptionContext";
+import { weeklyPricingData, monthlyPricingData } from "../../constants/plans";
 
 function Plans() {
   const [isChecked, setIsChecked] = useState(false);
@@ -10,41 +11,7 @@ function Plans() {
     setIsChecked(!isChecked);
     setSubscriptionData([]);
   };
-  const pricingData = [
-    {
-      id: "1",
-      head: "Breakfast",
-      price: isChecked ? "2000" : "700",
-      desc: "Morning bliss served on a plate – our breakfast specials",
-      features: [
-        "Flexible scheduling",
-        "Fully customizable",
-        "1 complimentary Smoothie each week",
-      ],
-    },
-    {
-      id: "2",
-      head: "Lunch",
-      price: isChecked ? "4000" : "1200",
-      desc: "Indulge in a delicious midday escape with our lunch options",
-      features: [
-        "Flexible scheduling",
-        "Fully customizable",
-        "1 complimentary Power Snack each week",
-      ],
-    },
-    {
-      id: "3",
-      head: "Dinner",
-      price: isChecked ? "3000" : "900",
-      desc: "Dinner perfection served fresh, just for you",
-      features: [
-        "Flexible scheduling",
-        "Fully customizable",
-        "1 complimentary Health Jar each week",
-      ],
-    },
-  ];
+
   return (
     <section className="bg-white dark:bg-gray-900">
       <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
@@ -83,17 +50,29 @@ function Plans() {
           </span>
         </label>
         <div className="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0">
-          {pricingData.map(({ head, price, desc, features, id }) => (
-            <PricingCard
-              key={id}
-              head={head}
-              price={price}
-              desc={desc}
-              isChecked={isChecked}
-              features={features}
-              id={id}
-            />
-          ))}
+          {isChecked
+            ? monthlyPricingData.map(({ head, price, desc, features, id }) => (
+                <PricingCard
+                  key={id}
+                  head={head}
+                  price={price}
+                  desc={desc}
+                  isChecked={isChecked}
+                  features={features}
+                  id={id}
+                />
+              ))
+            : weeklyPricingData.map(({ head, price, desc, features, id }) => (
+                <PricingCard
+                  key={id}
+                  head={head}
+                  price={price}
+                  desc={desc}
+                  isChecked={isChecked}
+                  features={features}
+                  id={id}
+                />
+              ))}
         </div>
       </div>
     </section>
