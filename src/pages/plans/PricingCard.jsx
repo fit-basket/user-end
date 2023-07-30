@@ -25,7 +25,7 @@ function PricingCard({ head, price, desc, isChecked, features, id }) {
         </span>
       </div>
 
-      <ul role="list" className="mb-8 space-y-4 text-left">
+      <ul className="mb-8 space-y-4 text-left">
         {features.map((feature) => (
           <li className="flex items-center space-x-3">
             <svg
