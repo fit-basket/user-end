@@ -1,11 +1,7 @@
 import React, { useContext, useState } from "react";
 import PricingCard from "./PricingCard";
 import { SubscriptionContext } from "../../context/SubscriptionContext";
-import {
-  weeklyPricingData,
-  mon,
-  monthlyPricingData,
-} from "../../constants/plans";
+import { weeklyPricingData, monthlyPricingData } from "../../constants/plans";
 
 function Plans() {
   const [isChecked, setIsChecked] = useState(false);

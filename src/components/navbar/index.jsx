@@ -1,13 +1,7 @@
 import { Fragment, useContext, useState } from "react";
 import { Dialog, Disclosure, Popover, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import {
-  ChevronDownIcon,
-  PhoneIcon,
-  PlayCircleIcon,
-  ShoppingBagIcon,
-  ShoppingCartIcon,
-} from "@heroicons/react/20/solid";
+import { ChevronDownIcon, ShoppingCartIcon } from "@heroicons/react/20/solid";
 
 import logo from "../../assets/logo/logo.png";
 import breakfast from "../../assets/images/breakfast.png";

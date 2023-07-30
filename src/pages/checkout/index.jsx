@@ -1,8 +1,9 @@
-import { Fragment, useContext, useState } from "react";
+import { Fragment, useContext } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { weeklyPricingData } from "../../constants/plans";
 import { SubscriptionContext } from "../../context/SubscriptionContext";
+import { Link } from "react-router-dom";
 
 export default function Checkout({ isCheckout, setIsCheckout }) {
   const { subscriptionData, handlePlanUpdate, priceTotal } =
@@ -57,10 +58,7 @@ export default function Checkout({ isCheckout, setIsCheckout }) {
                       <div className="mt-8">
                         <div className="flow-root">
                           {subscriptionData.length ? (
-                            <ul
-                              role="list"
-                              className="-my-6 divide-y divide-gray-300"
-                            >
+                            <ul className="-my-6 divide-y divide-gray-300">
                               {weeklyPricingData.map(
                                 ({ head, price, id, img }) =>
                                   subscriptionData.includes(id) && (
@@ -119,12 +117,12 @@ export default function Checkout({ isCheckout, setIsCheckout }) {
                         Shipping and taxes calculated at checkout.
                       </p>
                       <div className="mt-6">
-                        <a
-                          href="#"
+                        <Link
+                          to="/"
                           className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
                         >
                           Checkout
-                        </a>
+                        </Link>
                       </div>
                       <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
                         <p>
