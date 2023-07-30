@@ -61,10 +61,10 @@ export default function Navbar() {
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
-          <a href="#" className="-m-1.5 p-1.5">
-            <span className="sr-only">Your Company</span>
-            <img className="h-8 w-auto logo" src={logo} alt="" />
-          </a>
+          {/* <a href="#" className="-m-1.5 p-1.5"> */}
+          <span className="sr-only">Your Company</span>
+          <img className="h-8 w-auto logo" src={logo} alt="" />
+          {/* </a> */}
         </div>
         <div className="flex lg:hidden">
           <button
@@ -142,15 +142,15 @@ export default function Navbar() {
             </Transition>
           </Popover>
 
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+          <a href="/" className="text-sm font-semibold leading-6 text-gray-900">
             Our Plans
           </a>
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+          <a href="/" className="text-sm font-semibold leading-6 text-gray-900">
             Marketplace
           </a>
         </Popover.Group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+          <a href="/" className="text-sm font-semibold leading-6 text-gray-900">
             Log in <span aria-hidden="true">&rarr;</span>
           </a>
         </div>
@@ -164,7 +164,7 @@ export default function Navbar() {
         <div className="fixed inset-0 z-10" />
         <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
-            <a href="#" className="-m-1.5 p-1.5">
+            <a href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
               <img className="h-8 w-auto" src={logo} alt="" />
             </a>
@@ -209,13 +209,13 @@ export default function Navbar() {
                   )}
                 </Disclosure>
                 <a
-                  href="#"
+                  href="/"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Our Plans
                 </a>
                 <a
-                  href="#"
+                  href="/"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Marketplace
@@ -223,7 +223,7 @@ export default function Navbar() {
               </div>
               <div className="py-6">
                 <a
-                  href="#"
+                  href="/"
                   className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Log in
