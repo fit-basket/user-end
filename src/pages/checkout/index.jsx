@@ -4,6 +4,7 @@ import { XMarkIcon } from "@heroicons/react/24/outline";
 import { weeklyPricingData } from "../../constants/plans";
 import { SubscriptionContext } from "../../context/SubscriptionContext";
 import { Link } from "react-router-dom";
+import empty from "../../assets/images/empty.png";
 
 export default function Checkout({ isCheckout, setIsCheckout }) {
   const { subscriptionData, handlePlanUpdate, priceTotal } =
@@ -37,25 +38,35 @@ export default function Checkout({ isCheckout, setIsCheckout }) {
               >
                 <Dialog.Panel className="pointer-events-auto w-screen max-w-md">
                   <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
-                    <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
-                      <div className="flex items-start justify-between">
-                        <Dialog.Title className="text-lg font-medium text-gray-900">
-                          Shopping cart
-                        </Dialog.Title>
-                        <div className="ml-3 flex h-7 items-center">
-                          <button
-                            type="button"
-                            className="relative -m-2 p-2 text-gray-400 hover:text-gray-500"
-                            onClick={() => setIsCheckout(false)}
-                          >
-                            <span className="absolute -inset-0.5" />
-                            <span className="sr-only">Close panel</span>
-                            <XMarkIcon className="h-6 w-6" aria-hidden="true" />
-                          </button>
+                    <div
+                      className={`flex-1 grid overflow-y-auto px-4 py-6 sm:px-6 ${
+                        !subscriptionData.length ? "items-center" : ""
+                      }`}
+                      style={{ gridTemplateRows: "auto 1fr" }}
+                    >
+                      <div className="">
+                        <div className="flex items-start justify-between">
+                          <Dialog.Title className="text-lg font-medium text-gray-900">
+                            Shopping cart
+                          </Dialog.Title>
+                          <div className="ml-3 flex h-7 items-center">
+                            <button
+                              type="button"
+                              className="relative -m-2 p-2 text-gray-400 hover:text-gray-500"
+                              onClick={() => setIsCheckout(false)}
+                            >
+                              <span className="absolute -inset-0.5" />
+                              <span className="sr-only">Close panel</span>
+                              <XMarkIcon
+                                className="h-6 w-6"
+                                aria-hidden="true"
+                              />
+                            </button>
+                          </div>
                         </div>
                       </div>
 
-                      <div className="mt-8">
+                      <div className="mt-8 ">
                         <div className="flow-root">
                           {subscriptionData.length ? (
                             <ul className="-my-6 divide-y divide-gray-300">
@@ -88,7 +99,6 @@ export default function Checkout({ isCheckout, setIsCheckout }) {
                                               type="button"
                                               className="font-medium text-danger-main hover:text-danger-dark"
                                               onClick={() => {
-                                                console.log("NEWW", price);
                                                 handlePlanUpdate(id, price);
                                               }}
                                             >
@@ -102,7 +112,18 @@ export default function Checkout({ isCheckout, setIsCheckout }) {
                               )}
                             </ul>
                           ) : (
-                            <div>Wow, such empty</div>
+                            <div className="flex flex-col items-center justify-center h-full">
+                              <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md">
+                                <img
+                                  src={empty}
+                                  alt="empty cart"
+                                  className="h-full w-full object-cover object-center"
+                                />
+                              </div>
+                              <p className="mt-4 text-gray-500 text-center">
+                                Wow, such empty
+                              </p>
+                            </div>
                           )}
                         </div>
                       </div>
