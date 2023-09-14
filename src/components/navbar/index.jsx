@@ -54,7 +54,7 @@ export default function Navbar({ setIsCheckout }) {
   const { subscriptionData } = useContext(SubscriptionContext);
 
   return (
-    <header className="bg-white">
+    <header className="bg-transaparent">
       <nav
         className="mx-auto flex max-w-7xl items-center justify-between px-8"
         aria-label="Global"
@@ -148,7 +148,7 @@ export default function Navbar({ setIsCheckout }) {
             Our Plans
           </Link>
           <Link
-            to="/"
+            to="/pastry-board"
             className="text-sm font-semibold leading-6 text-gray-900"
           >
             The Pastry Board
@@ -235,7 +235,7 @@ export default function Navbar({ setIsCheckout }) {
                   Our Plans
                 </Link>
                 <Link
-                  to="/"
+                  to="/pastry-board"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   The Pastry Board

@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Herr+Von+Muellerhoff&family=Yellowtail&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;800&family=Poppins:wght@100;300;500;700&family=Yellowtail&display=swap');
+
+.pastry_bg{
+    background-color: #f7f9f8;
+
+}
+
+.pastry_heading{
+/* font-family: 'Yellowtail', cursive; */
+font-family: 'Herr Von Muellerhoff', cursive;
+
+}
+
+
+.pastry_subheading{
+font-family: 'League Spartan', sans-serif;
+
+}
+
+.pastry_height{
+height: calc(100vh - 100px);
+}
+
+.pastry_topics{
+    background: url('https://aircampus.in/assets/banner-8.png');
+    background-repeat: no-repeat;
+    background-size: 10% 10%;
+    background-position-x: left;
+    background-position-y: bottom;
+}
