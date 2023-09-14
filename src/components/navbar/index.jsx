@@ -147,6 +147,12 @@ export default function Navbar({ setIsCheckout }) {
           >
             Our Plans
           </Link>
+          <Link
+            to="/"
+            className="text-sm font-semibold leading-6 text-gray-900"
+          >
+            The Pastry Board
+          </Link>
           <a href="/" className="text-sm font-semibold leading-6 text-gray-900">
             Marketplace
           </a>
@@ -223,10 +229,16 @@ export default function Navbar({ setIsCheckout }) {
                   )}
                 </Disclosure>
                 <Link
-                  to="plans"
+                  to="/plans"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Our Plans
+                </Link>
+                <Link
+                  to="/"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                >
+                  The Pastry Board
                 </Link>
                 <a
                   href="/"
