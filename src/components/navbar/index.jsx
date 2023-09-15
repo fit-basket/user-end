@@ -159,14 +159,14 @@ export default function Navbar({ setIsCheckout }) {
         </Popover.Group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <div
-            class="relative cursor-pointer mr-5"
+            className="relative cursor-pointer mr-5"
             onClick={() => setIsCheckout(true)}
           >
             <ShoppingCartIcon
               className="h-5 w-5 flex-none text-gray-400"
               aria-hidden="true"
             />
-            <div class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-danger-main border-2 border-white rounded-full -top-3 -right-4 dark:border-gray-900">
+            <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-danger-main border-2 border-white rounded-full -top-3 -right-4 dark:border-gray-900">
               {subscriptionData.length}
             </div>
           </div>{" "}
@@ -249,14 +249,14 @@ export default function Navbar({ setIsCheckout }) {
               </div>
               <div className="py-6">
                 <div
-                  class="relative cursor-pointer"
+                  className="relative cursor-pointer"
                   onClick={() => setIsCheckout(true)}
                 >
                   <ShoppingCartIcon
                     className="h-5 w-5 flex-none text-gray-400"
                     aria-hidden="true"
                   />
-                  <div class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-danger-main border-2 border-white rounded-full -top-2 left-4 dark:border-gray-900">
+                  <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-danger-main border-2 border-white rounded-full -top-2 left-4 dark:border-gray-900">
                     {subscriptionData.length}
                   </div>
                 </div>{" "}

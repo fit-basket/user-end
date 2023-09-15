@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
+
+import Product from "../../components/products";
+import { cakeList } from "../../constants/products";
+
 import cake from "../../assets/images/blur_edges.jpg";
 import down from "../../assets/images/down.gif";
-// import { ChevronDoubleDownIcon } from "@heroicons/react/20/solid";
 
 import "./index.css";
-import Product from "../../components/products";
+import Modal from "../../components/modals";
 
 export default function PastryBoard() {
+  const [open, setOpen] = useState(false);
+  const [modalItem, setModalItem] = useState({});
+
+  const [selectedColor, setSelectedColor] = useState([0]);
+  const [selectedSize, setSelectedSize] = useState([2]);
+
   function scrollToElement() {
     const element = document.getElementById("cakes");
     if (element) {
@@ -32,7 +41,7 @@ export default function PastryBoard() {
             <img
               src={down}
               alt=""
-              srcset=""
+              srcSet=""
               className="m-auto cursor-pointer"
               onClick={scrollToElement}
             />
@@ -45,7 +54,11 @@ export default function PastryBoard() {
           >
             Cakes
           </h2>
-          <Product />
+          <Product
+            products={cakeList}
+            setOpen={setOpen}
+            setModalItem={setModalItem}
+          />
         </div>
         <div>
           <h2
@@ -54,7 +67,11 @@ export default function PastryBoard() {
           >
             Jar cakes
           </h2>
-          <Product />
+          <Product
+            products={cakeList}
+            setOpen={setOpen}
+            setModalItem={setModalItem}
+          />
         </div>
         <div>
           <h2
@@ -63,7 +80,11 @@ export default function PastryBoard() {
           >
             Cup Cakes
           </h2>
-          <Product />
+          <Product
+            products={cakeList}
+            setOpen={setOpen}
+            setModalItem={setModalItem}
+          />
         </div>
         <div>
           <h2
@@ -72,7 +93,11 @@ export default function PastryBoard() {
           >
             Brownies
           </h2>
-          <Product />
+          <Product
+            products={cakeList}
+            setOpen={setOpen}
+            setModalItem={setModalItem}
+          />
         </div>
         <div>
           <h2
@@ -81,9 +106,22 @@ export default function PastryBoard() {
           >
             CheeseCakes
           </h2>
-          <Product />
+          <Product
+            products={cakeList}
+            setOpen={setOpen}
+            setModalItem={setModalItem}
+          />
         </div>
       </div>
+      <Modal
+        open={open}
+        setOpen={setOpen}
+        modalItem={modalItem}
+        selectedColor={selectedColor}
+        setSelectedColor={setSelectedColor}
+        selectedSize={selectedSize}
+        setSelectedSize={setSelectedSize}
+      />
     </div>
   );
 }

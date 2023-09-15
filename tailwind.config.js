@@ -3,6 +3,9 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {},
+    ringWidth: {
+      2: "2px",
+    },
     colors: {
       primary: "#F9B81D",
       secondary: {
@@ -21,8 +24,11 @@ module.exports = {
         main: "#fb7185",
       },
       gray: {
+        50: " rgb(249 250 251)",
+        200: "rgb(229 231 235);",
         300: "rgb(209 213 219)",
         500: "rgb(107 114 128)",
+        900: "rgb(17 24 39)",
       },
     },
   },
