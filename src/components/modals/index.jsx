@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import { Dialog, RadioGroup, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { StarIcon } from "@heroicons/react/20/solid";
@@ -116,7 +116,7 @@ export default function Modal({
                               {product.rating} out of 5 stars
                             </p>
                             <a
-                              href="#"
+                              href="/"
                               className="ml-3 text-sm font-medium text-button-main hover:text-button-light"
                             >
                               {product.reviewCount} reviews
