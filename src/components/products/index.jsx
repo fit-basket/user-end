@@ -2,55 +2,25 @@ import vanilla from "../../assets/products/vanilla.jpg";
 import strawberry from "../../assets/products/strawberry.jpeg";
 import red from "../../assets/products/red.jpeg";
 import choco from "../../assets/products/chocolate.jpeg";
+import Modal from "../modals";
 
-export default function Product() {
-  const products = [
-    {
-      id: 1,
-      name: "Vanilla Cake",
-      href: "#",
-      imageSrc: vanilla,
-      imageAlt: "Vanilla Cake",
-      price: "$35",
-      color: "Black",
-    },
-    {
-      id: 2,
-      name: "Strawberry Cake",
-      href: "#",
-      imageSrc: strawberry,
-      imageAlt: "Strawberry Cake",
-      price: "$35",
-      color: "Black",
-    },
-    {
-      id: 3,
-      name: "Red Velvet Cake",
-      href: "#",
-      imageSrc: red,
-      imageAlt: "Red Velvet Cake",
-      price: "$35",
-      color: "Black",
-    },
-    {
-      id: 4,
-      name: "Chocolate Cake",
-      href: "#",
-      imageSrc: choco,
-      imageAlt: "Chocolate Cake",
-      price: "$35",
-      color: "Black",
-    },
-    // More products...
-  ];
+export default function Product({ products, setOpen, setModalItem }) {
+  const handleModal = (item) => {
+    setOpen(true);
+    setModalItem(item);
+  };
 
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-2xl px-4 py-10 sm:px-6  lg:max-w-7xl lg:px-8">
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
           {products.map((product) => (
-            <div key={product.id} className="group relative">
-              <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+            <div
+              key={product.id}
+              className="group relative"
+              onClick={() => handleModal(product)}
+            >
+              <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80 cursor-pointer">
                 <img
                   src={product.imageSrc}
                   alt={product.imageAlt}
@@ -58,19 +28,17 @@ export default function Product() {
                 />
               </div>
               <div className="mt-4 flex justify-between">
-                <div>
+                <div className="cursor-pointer">
                   <h3 className="text-sm text-gray-700">
-                    <a href={product.href}>
-                      <span aria-hidden="true" className="absolute inset-0" />
-                      {product.name}
-                    </a>
+                    <span aria-hidden="true" className="absolute inset-0" />
+                    {product.name}
                   </h3>
                   <p className="mt-1 text-sm text-start text-gray-500">
                     {product.color}
                   </p>
                 </div>
                 <p className="text-sm font-medium text-gray-900">
-                  {product.price}
+                  ₹{product.price}
                 </p>
               </div>
             </div>
