@@ -1,9 +1,3 @@
-import vanilla from "../../assets/products/vanilla.jpg";
-import strawberry from "../../assets/products/strawberry.jpeg";
-import red from "../../assets/products/red.jpeg";
-import choco from "../../assets/products/chocolate.jpeg";
-import Modal from "../modals";
-
 export default function Product({ products, setOpen, setModalItem }) {
   const handleModal = (item) => {
     setOpen(true);
