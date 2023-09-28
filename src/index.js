@@ -3,17 +3,17 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { BrowserRouter as Router } from "react-router-dom";
-import { SubscriptionContextProvider } from "./context/SubscriptionContext";
+// import { BrowserRouter as Router } from "react-router-dom";
+// import { SubscriptionContextProvider } from "./context/SubscriptionContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Router>
-      <SubscriptionContextProvider>
-        <App />
-      </SubscriptionContextProvider>
-    </Router>
+    {/* <Router> */}
+    {/* <SubscriptionContextProvider> */}
+    <App />
+    {/* </SubscriptionContextProvider> */}
+    {/* </Router> */}
   </React.StrictMode>
 );
 
