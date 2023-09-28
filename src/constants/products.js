@@ -10,7 +10,7 @@ export const cakeList = [
     imageSrc: vanillaBento,
     imageAlt: "Vanilla Cake",
     price: "300",
-    color: "Black",
+    color: "5 options",
     rating: 5,
   },
   {
@@ -19,7 +19,7 @@ export const cakeList = [
     imageSrc: strawberryBento,
     imageAlt: "Strawberry Bento Cake",
     price: "330",
-    color: "Black",
+    color: "4 options",
     rating: 5,
   },
   {
@@ -28,7 +28,7 @@ export const cakeList = [
     imageSrc: redVelvetBento,
     imageAlt: "Red Velvet Bento Cake",
     price: "330",
-    color: "Black",
+    color: "5 options",
     rating: 5,
   },
   {
@@ -37,7 +37,7 @@ export const cakeList = [
     imageSrc: chocoBento,
     imageAlt: "Chocolate Bento Cake",
     price: "320",
-    color: "Black",
+    color: "5 options",
     rating: 5,
   },
   // More products...
