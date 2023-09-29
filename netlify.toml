@@ -2,7 +2,7 @@
 
 [build]
   # The build command for your frontend (React)
-  command = "cd frontend && npm run build"  # Replace with your actual build command
+  command = "npm run build"  # Replace with your actual build command
 
   # The directory where your frontend build output is located
   publish = "frontend/build"  # Replace with your actual build folder path
@@ -19,5 +19,5 @@
 # Define build settings for your backend (Node.js, Express, etc.) if needed
 # Example:
 # [build]
-#   command = "cd backend && npm run build"  # Replace with your backend build command
+#   command = "npm run build"  # Replace with your backend build command
 #   publish = "backend/build"  # Replace with your backend build folder path
