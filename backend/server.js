@@ -8,7 +8,7 @@ const { ObjectId } = require("mongodb");
 const port = process.env.PORT || 3001;
 
 app.use(cors());
-
+app.use(express.json());
 // app.use("/api/people", people);
 
 let db;
@@ -32,6 +32,19 @@ app.get("/", (req, res) => {
     })
     .catch(() => {
       res.status(500).json({ error: "Error" });
+    });
+});
+
+app.post("/", (req, res) => {
+  const shop = req.body;
+
+  db.collection("shops")
+    .insertOne(shop)
+    .then((result) => {
+      res.status(200).json(result);
+    })
+    .catch((err) => {
+      res.status(500).json({ err: "Could not add data" });
     });
 });
 

@@ -1,6 +1,7 @@
 const { MongoClient } = require("mongodb");
 
-const uri = "mongodb://localhost:27017/purple-mango";
+const uri =
+  "mongodb+srv://souvikdeb:vlls7mKtjw8Fs4Be@cluster0.ylcnuqm.mongodb.net/thePurpleMango?retryWrites=true&w=majority";
 
 let dbConnection;
 
@@ -15,6 +16,7 @@ const connectToDb = (cb) => {
       return cb(err);
     });
 };
+
 const getDatabase = () => dbConnection;
 
 module.exports = { connectToDb, getDatabase };
