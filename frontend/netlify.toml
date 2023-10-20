@@ -5,7 +5,7 @@
   command = "npm run build"  # Replace with your actual build command
 
   # The directory where your frontend build output is located
-  publish = "frontend/build"  # Replace with your actual build folder path
+  publish = "build"  # Replace with your actual build folder path
 
   # Build environment variables (if needed)
   # environment = { REACT_APP_API_URL = "/.netlify/functions/api" }  # Replace with your API endpoint
