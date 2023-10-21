@@ -1,12 +1,16 @@
 import React from "react";
-// import plant from "../../assets/images/plant.jpeg";
-// import flower from "../../assets/images/flower.jpeg";
-// import salad from "../../assets/images/salad.jpeg";
-// import brownie from "../../assets/images/brownie.jpeg";
-// import donut from "../../assets/images/donut.jpeg";
+import plant from "../../assets/images/plant.jpeg";
+import flower from "../../assets/images/flower.jpeg";
+import salad from "../../assets/images/salad.jpeg";
+import brownie from "../../assets/images/brownie.jpeg";
+import donut from "../../assets/images/donut.jpeg";
 import { Link } from "react-router-dom";
+import FeaturedShops from "../../components/shops";
+import ImageSlider from "../../components/shops";
 
 function Home() {
+  const shops = [plant, flower, salad, brownie, donut, plant, plant, plant];
+
   return (
     <div>
       {/* Background section */}
@@ -54,6 +58,7 @@ function Home() {
           Featured Purplepreneurs
         </h2>
         {/* Add your content here */}
+        <ImageSlider images={shops} />
       </div>
     </div>
   );
