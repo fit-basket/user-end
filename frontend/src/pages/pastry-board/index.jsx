@@ -34,7 +34,7 @@ export default function PastryBoard() {
             <h1 className="text-8xl font-bold pastry_heading mb-2">
               Slice of Paradise
             </h1>
-            <p className="text-3xl pastry_subheading mb-10">
+            <p className="text-3xl purple_subheading mb-10">
               Your Journey to Dessert Nirvana
             </p>
             {/* <ChevronDoubleDownIcon className="h-5 w-5 m-auto text-gray-400" /> */}
@@ -49,7 +49,7 @@ export default function PastryBoard() {
         </div>
         <div>
           <h2
-            className="text-3xl text-start pastry_subheading pastry_topics"
+            className="text-3xl text-start purple_subheading pastry_topics"
             id="cakes"
           >
             Cakes
@@ -62,7 +62,7 @@ export default function PastryBoard() {
         </div>
         <div>
           <h2
-            className="text-3xl text-start pastry_subheading pastry_topics"
+            className="text-3xl text-start purple_subheading pastry_topics"
             id="cakes"
           >
             Jar cakes
@@ -75,7 +75,7 @@ export default function PastryBoard() {
         </div>
         <div>
           <h2
-            className="text-3xl text-start pastry_subheading pastry_topics"
+            className="text-3xl text-start purple_subheading pastry_topics"
             id="cakes"
           >
             Cup Cakes
@@ -88,7 +88,7 @@ export default function PastryBoard() {
         </div>
         <div>
           <h2
-            className="text-3xl text-start pastry_subheading pastry_topics"
+            className="text-3xl text-start purple_subheading pastry_topics"
             id="cakes"
           >
             Brownies
@@ -101,7 +101,7 @@ export default function PastryBoard() {
         </div>
         <div>
           <h2
-            className="text-3xl text-start pastry_subheading pastry_topics"
+            className="text-3xl text-start purple_subheading pastry_topics"
             id="cakes"
           >
             CheeseCakes
