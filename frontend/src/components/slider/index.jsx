@@ -1,18 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { getScreenSize } from "../../utils/helper";
-
-// Functional component to display circular images
-function Circle({ src }) {
-  return (
-    <img className="rounded-full w-full h-full" src={src} alt=" description" />
-  );
-}
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
+import Rect from "./RectImageSlider";
+import Circle from "./CircleImageSlider";
+// import { ChevronRightIcon, ChevronLeftIcon } from "@heroicons/react/20/solid";
 
 // ImageSlider component
-function ImageSlider({ images }) {
+function ImageSlider({ imageType, images, maxImage }) {
   // State and variables
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [maxImages, setMaxImages] = useState(5);
+  const [maxImages, setMaxImages] = useState(maxImage);
 
   // Function to go to the previous slide
   const prevSlide = () => {
@@ -60,16 +57,16 @@ function ImageSlider({ images }) {
           setMaxImages(2);
           break;
         case "medium":
-          setMaxImages(3);
+          setMaxImages(maxImage - 2);
           break;
         case "large":
-          setMaxImages(4);
+          setMaxImages(maxImage - 1);
           break;
         case "extraLarge":
-          setMaxImages(5);
+          setMaxImages(maxImage);
           break;
         default:
-          setMaxImages(5); // Default value for unknown screen sizes
+          setMaxImages(maxImage); // Default value for unknown screen sizes
       }
     }
 
@@ -83,27 +80,39 @@ function ImageSlider({ images }) {
     return () => {
       window.removeEventListener("resize", updateMaxImages);
     };
-  }, []);
+  }, [maxImage]);
 
   // Render the component
   return (
     <div className="flex my-6">
       <button className="" onClick={prevSlide} disabled={!canGoBack}>
-        {`<`}
+        <ChevronLeftIcon
+          className={`h-5 w-5 flex-none ${
+            canGoBack ? "text-gray-900" : "text-gray-200"
+          }`}
+          aria-hidden="true"
+        />
       </button>
 
       <div className="overflow-hidden w-full">
         <div className="flex my-6 justify-center">
-          {carousalImages.map((image, index) => (
-            <div key={index} className="mx-6 w-40 h-40 image">
-              <Circle src={image} />
-            </div>
-          ))}
+          {carousalImages.map((image, index) =>
+            imageType === "circle" ? (
+              <Circle key={index} src={image} />
+            ) : (
+              <Rect key={index} src={image} />
+            )
+          )}
         </div>
       </div>
 
       <button className="" onClick={nextSlide} disabled={!canGoForward}>
-        {`>`}
+        <ChevronRightIcon
+          className={`h-5 w-5 flex-none ${
+            canGoForward ? "text-gray-900" : "text-gray-200"
+          }`}
+          aria-hidden="true"
+        />
       </button>
     </div>
   );

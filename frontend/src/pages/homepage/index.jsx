@@ -5,8 +5,7 @@ import salad from "../../assets/images/salad.jpeg";
 import brownie from "../../assets/images/brownie.jpeg";
 import donut from "../../assets/images/donut.jpeg";
 import { Link } from "react-router-dom";
-// import FeaturedShops from "../../components/shops";
-import ImageSlider from "../../components/shops";
+import ImageSlider from "../../components/slider";
 
 function Home() {
   const shops = [plant, flower, salad, brownie, donut, plant, plant, plant];
@@ -53,12 +52,21 @@ function Home() {
       </section>
 
       {/* Main content container */}
-      <div className="container mx-auto px-4">
+      {/* <section className="border-b"> */}
+      <div className="container mx-auto px-4 border-b">
         <h2 className="text-3xl mt-4 text-start purple_subheading" id="cakes">
           Featured Purplepreneurs
         </h2>
         {/* Add your content here */}
-        <ImageSlider images={shops} />
+        <ImageSlider images={shops} maxImage={5} imageType="circle" />
+      </div>
+      {/* </section> */}
+      <div className="container mx-auto px-4">
+        <h2 className="text-3xl mt-4 text-start purple_subheading" id="cakes">
+          Browse, Select, and Order Away
+        </h2>
+        {/* Add your content here */}
+        <ImageSlider images={shops} maxImage={4} imageType="rect" />
       </div>
     </div>
   );
