@@ -4,11 +4,7 @@ import { getScreenSize } from "../../utils/helper";
 // Functional component to display circular images
 function Circle({ src }) {
   return (
-    <img
-      className="rounded-full w-full h-full"
-      src={src}
-      alt="image description"
-    />
+    <img className="rounded-full w-full h-full" src={src} alt=" description" />
   );
 }
 

@@ -5,7 +5,7 @@ import salad from "../../assets/images/salad.jpeg";
 import brownie from "../../assets/images/brownie.jpeg";
 import donut from "../../assets/images/donut.jpeg";
 import { Link } from "react-router-dom";
-import FeaturedShops from "../../components/shops";
+// import FeaturedShops from "../../components/shops";
 import ImageSlider from "../../components/shops";
 
 function Home() {
