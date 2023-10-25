@@ -7,6 +7,7 @@ const shopSchema = new mongoose.Schema(
     sections: { type: Array, required: true },
     rating: { type: Number, required: true },
     menu: { type: Array, required: true },
+    image: { type: String },
   },
   { collection: "shops" }
 );

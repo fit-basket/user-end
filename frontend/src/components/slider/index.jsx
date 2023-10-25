@@ -7,6 +7,7 @@ import Circle from "./CircleImageSlider";
 
 // ImageSlider component
 function ImageSlider({ imageType, images, maxImage }) {
+  console.log("Images", images);
   // State and variables
   const [currentIndex, setCurrentIndex] = useState(0);
   const [maxImages, setMaxImages] = useState(maxImage);
@@ -96,11 +97,11 @@ function ImageSlider({ imageType, images, maxImage }) {
 
       <div className="overflow-hidden w-full">
         <div className="flex my-6 justify-center">
-          {carousalImages.map((image, index) =>
+          {carousalImages?.map((image, index) =>
             imageType === "circle" ? (
-              <Circle key={index} src={image} />
+              <Circle key={index} src={image?.image} alt={image.title} />
             ) : (
-              <Rect key={index} src={image} />
+              <Rect key={index} src={image?.image} alt={image.title} />
             )
           )}
         </div>

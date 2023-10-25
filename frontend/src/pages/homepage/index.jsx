@@ -1,14 +1,18 @@
-import React from "react";
-import plant from "../../assets/images/plant.jpeg";
-import flower from "../../assets/images/flower.jpeg";
-import salad from "../../assets/images/salad.jpeg";
-import brownie from "../../assets/images/brownie.jpeg";
-import donut from "../../assets/images/donut.jpeg";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ImageSlider from "../../components/slider";
+import axios from "../../utils/axiosConfig";
 
 function Home() {
-  const shops = [plant, flower, salad, brownie, donut, plant, plant, plant];
+  // const shops = [plant, flower, salad, brownie, donut, plant, plant, plant];
+  const [shops, setShops] = useState([]);
+
+  useEffect(() => {
+    axios.get("/shops").then((data) => {
+      console.log("data", data);
+      setShops(data.data);
+    });
+  }, []);
 
   return (
     <div>
