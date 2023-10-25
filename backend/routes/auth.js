@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const { getData, getID } = require("../controllers/auth");
+const { getData, createShop } = require("../controllers/auth");
 
 router.get("/shops", getData);
 
-router.get("/:id", getID);
+router.post("/createShop", createShop);
 
 module.exports = router;

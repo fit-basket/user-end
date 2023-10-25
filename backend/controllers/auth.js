@@ -1,19 +1,21 @@
-const getData = (req, res) => {
-  let shops = [];
-  db.collection("shops")
-    .find()
-    .forEach((shop) => shops.push(shop))
-    .then(() => {
-      res.status(200).json(shops);
+const shopModel = require("../models/shops");
+
+const getData = async (req, res) => {
+  const result = await shopModel
+    .find({})
+    .then((response) => {
+      res.status(200).json(response);
     })
-    .catch(() => {
-      res.status(500).json({ error: "Error" });
+    .catch((err) => {
+      res.status(500).json({ error: err });
     });
 };
 
-const getID = (req, res) => {
-  const { id } = req.params;
-  res.send({ message: id });
+const createShop = async (req, res) => {
+  const shop = req.body;
+  const result = await shopModel.create(shop);
+
+  res.status(200).json({ status: "ok" });
 };
 
-module.exports = { getData, getID };
+module.exports = { getData, createShop };
