@@ -1,5 +1,14 @@
 const getData = (req, res) => {
-  res.send({ message: "Hello Home!" });
+  let shops = [];
+  db.collection("shops")
+    .find()
+    .forEach((shop) => shops.push(shop))
+    .then(() => {
+      res.status(200).json(shops);
+    })
+    .catch(() => {
+      res.status(500).json({ error: "Error" });
+    });
 };
 
 const getID = (req, res) => {
