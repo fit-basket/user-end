@@ -31,7 +31,6 @@ export default function Modal({
   selectedSize,
   setSelectedSize,
 }) {
-  console.log("first", product);
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={setOpen}>

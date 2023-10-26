@@ -7,7 +7,6 @@ import Circle from "./CircleImageSlider";
 
 // ImageSlider component
 function ImageSlider({ imageType, images, maxImage }) {
-  console.log("Images", images);
   // State and variables
   const [currentIndex, setCurrentIndex] = useState(0);
   const [maxImages, setMaxImages] = useState(maxImage);

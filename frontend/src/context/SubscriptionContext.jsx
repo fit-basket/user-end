@@ -10,7 +10,6 @@ const SubscriptionContextProvider = ({ children }) => {
   const [priceTotal, setPriceTotal] = useState(0);
 
   const handlePlanUpdate = (id, price) => {
-    console.log("first", priceTotal, price);
     if (subscriptionData.includes(id)) {
       setSubscriptionData(subscriptionData.filter((item) => item !== id));
       setPriceTotal(priceTotal - price);
