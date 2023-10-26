@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { MapPinIcon } from "@heroicons/react/24/solid";
 import axios from "../../utils/axiosConfig";
 
 function SearchBar() {

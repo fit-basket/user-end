@@ -1,50 +1,22 @@
-import { Fragment, useContext, useState } from "react";
-import { Dialog, Disclosure, Popover, Transition } from "@headlessui/react";
+import { useContext, useState } from "react";
+import { Dialog, Popover } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { ChevronDownIcon, ShoppingCartIcon } from "@heroicons/react/20/solid";
+import { ShoppingCartIcon } from "@heroicons/react/20/solid";
 
 import logo from "../../assets/logo/logo.png";
-import breakfast from "../../assets/images/breakfast.png";
-import lunch from "../../assets/images/lunch.png";
-import dinner from "../../assets/images/dinner.png";
-import snack from "../../assets/images/snack.png";
+// import breakfast from "../../assets/images/breakfast.png";
+// import lunch from "../../assets/images/lunch.png";
+// import dinner from "../../assets/images/dinner.png";
+// import snack from "../../assets/images/snack.png";
 
 import "./index.css";
 import { Link } from "react-router-dom";
 import { SubscriptionContext } from "../../context/SubscriptionContext";
 import SearchBar from "./SearchBar";
 
-const products = [
-  {
-    name: "Breakfast",
-    description: "Morning bliss served on a plate – our breakfast specials",
-    href: "#",
-    icon: breakfast,
-  },
-  {
-    name: "Lunch",
-    description: "Indulge in a delicious midday escape with our lunch options",
-    href: "#",
-    icon: lunch,
-  },
-  {
-    name: "Snacks",
-    description:
-      "Snack smart, snack delicious – our handpicked favorites await",
-    href: "#",
-    icon: snack,
-  },
-  {
-    name: "Dinner",
-    description: "Dinner perfection served fresh, just for you",
-    href: "#",
-    icon: dinner,
-  },
-];
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
+// function classNames(...classes) {
+//   return classes.filter(Boolean).join(" ");
+// }
 
 export default function Navbar({ setIsCheckout }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
