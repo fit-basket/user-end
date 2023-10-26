@@ -9,7 +9,6 @@ function Home() {
 
   useEffect(() => {
     axios.get("/shops").then((data) => {
-      console.log("data", data);
       setShops(data.data);
     });
   }, []);

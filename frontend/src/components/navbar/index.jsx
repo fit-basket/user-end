@@ -12,6 +12,7 @@ import snack from "../../assets/images/snack.png";
 import "./index.css";
 import { Link } from "react-router-dom";
 import { SubscriptionContext } from "../../context/SubscriptionContext";
+import SearchBar from "./SearchBar";
 
 const products = [
   {
@@ -40,10 +41,6 @@ const products = [
     icon: dinner,
   },
 ];
-// const callsToAction = [
-//   { name: "Watch demo", href: "#", icon: PlayCircleIcon },
-//   { name: "Contact sales", href: "#", icon: PhoneIcon },
-// ];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -61,7 +58,6 @@ export default function Navbar({ setIsCheckout }) {
       >
         <Link to="/" className="flex lg:flex-1">
           {/* <a href="#" className="-m-1.5 p-1.5"> */}
-          <span className="sr-only">Your Company</span>
           <img className="h-8 w-auto logo" src={logo} alt="" />
           {/* </a> */}
         </Link>
@@ -75,8 +71,8 @@ export default function Navbar({ setIsCheckout }) {
             <Bars3Icon className="h-6 w-6" aria-hidden="true" />
           </button>
         </div>
-        <Popover.Group className="hidden lg:flex lg:gap-x-12">
-          <Popover className="relative">
+        <Popover.Group className="hidden flex-1 lg:flex lg:gap-x-12">
+          {/* <Popover className="relative">
             <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
               Our Menus
               <ChevronDownIcon
@@ -102,10 +98,6 @@ export default function Navbar({ setIsCheckout }) {
                       className="group relative flex items-start gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50"
                     >
                       <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                        {/* <item.icon
-                          className="h-6 w-6 text-gray-600 group-hover:text-indigo-600"
-                          aria-hidden="true"
-                        /> */}
                         <img src={item.icon} alt={item.name} />
                       </div>
                       <div className="flex-auto">
@@ -123,20 +115,6 @@ export default function Navbar({ setIsCheckout }) {
                     </div>
                   ))}
                 </div>
-                {/* <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
-                  {callsToAction.map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      className="flex items-center justify-center gap-x-2.5 p-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100"
-                    >
-                      
-                      <img src={item.icon} alt={item.name} />
-
-                      {item.name}
-                    </a>
-                  ))}
-                </div> */}
               </Popover.Panel>
             </Transition>
           </Popover>
@@ -155,7 +133,8 @@ export default function Navbar({ setIsCheckout }) {
           </Link>
           <a href="/" className="text-sm font-semibold leading-6 text-gray-900">
             Marketplace
-          </a>
+          </a> */}
+          <SearchBar />
         </Popover.Group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <div
@@ -198,9 +177,9 @@ export default function Navbar({ setIsCheckout }) {
             </button>
           </div>
           <div className="mt-6 flow-root">
-            <div className="-my-6 divide-y divide-gray-500/10">
+            <div className="-my-6">
               <div className="space-y-2 py-6">
-                <Disclosure as="div" className="-mx-3">
+                {/* <Disclosure as="div" className="-mx-3">
                   {({ open }) => (
                     <>
                       <Disclosure.Button className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
@@ -245,7 +224,8 @@ export default function Navbar({ setIsCheckout }) {
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Marketplace
-                </a>
+                </a> */}
+                <SearchBar />
               </div>
               <div className="py-6">
                 <div
