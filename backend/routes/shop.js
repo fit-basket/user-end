@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { getData, createShop } = require("../controllers/auth");
+const { getData, createShop } = require("../controllers/shop");
 
 router.get("/shops", getData);
 

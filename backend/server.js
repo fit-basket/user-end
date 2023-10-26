@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const people = require("./routes/auth");
+const shop = require("./routes/shop");
 const app = express();
 const mongoose = require("mongoose");
 
@@ -8,7 +8,7 @@ const port = process.env.PORT || 3001;
 
 app.use(cors());
 app.use(express.json());
-app.use("/api", people);
+app.use("/api", shop);
 
 // let db;
 const uri =
