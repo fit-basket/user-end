@@ -1,14 +1,15 @@
 const express = require("express");
 const cors = require("cors");
-const shop = require("./routes/shop");
-const app = express();
+const shopRoutes = require("./routes/shop");
+const authRoutes = require("./routes/auth");
 const mongoose = require("mongoose");
+
+const app = express();
 
 const port = process.env.PORT || 3001;
 
 app.use(cors());
 app.use(express.json());
-app.use("/api", shop);
 
 // let db;
 const uri =
@@ -18,3 +19,6 @@ mongoose.connect(uri);
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
+
+app.use("/api", shopRoutes);
+app.use("/api/auth", authRoutes);
