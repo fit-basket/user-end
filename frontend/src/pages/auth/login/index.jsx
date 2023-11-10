@@ -15,7 +15,7 @@ export default function Auth() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post("/auth/signip", { ...user }).then((data) => {
+    axios.post("/auth/signin", { ...user }).then((data) => {
       console.log("RES", data);
     });
   };
