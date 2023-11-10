@@ -22,3 +22,13 @@ app.listen(port, () => {
 
 app.use("/api", shopRoutes);
 app.use("/api/auth", authRoutes);
+
+app.use((err, req, res, next) => {
+  const statusCode = err.statusCode || 500;
+  const message = err.message || "Internal server error";
+  return res.json({
+    success: false,
+    message,
+    statusCode,
+  });
+});
