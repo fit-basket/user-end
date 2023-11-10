@@ -1,21 +1,18 @@
-const shopModel = require("../models/shops");
+const User = require("../models/user");
+const bcryptjs = require("bcryptjs");
 
-const getData = async (req, res) => {
-  const result = await shopModel
-    .find({})
-    .then((response) => {
-      res.status(200).json(response);
-    })
-    .catch((err) => {
-      res.status(500).json({ error: err });
-    });
+const signUp = async (req, res, next) => {
+  const { username, email, password } = req.body;
+
+  const hashedPassword = bcryptjs.hashSync(password, 10);
+  const newUser = new User({ username, email, password: hashedPassword });
+
+  try {
+    await newUser.save();
+    res.status(201).json({ message: "User created successfully" });
+  } catch (error) {
+    next(error);
+  }
 };
 
-const createShop = async (req, res) => {
-  const shop = req.body;
-  const result = await shopModel.create(shop);
-
-  res.status(200).json({ status: "ok" });
-};
-
-module.exports = { getData, createShop };
+module.exports = { signUp };
