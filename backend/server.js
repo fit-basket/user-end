@@ -1,5 +1,7 @@
 const express = require("express");
 const cors = require("cors");
+require("dotenv").config();
+
 const shopRoutes = require("./routes/shop");
 const authRoutes = require("./routes/auth");
 const mongoose = require("mongoose");
@@ -12,8 +14,7 @@ app.use(cors());
 app.use(express.json());
 
 // let db;
-const uri =
-  "mongodb+srv://souvikdeb:vlls7mKtjw8Fs4Be@cluster0.ylcnuqm.mongodb.net/thePurpleMango?retryWrites=true&w=majority";
+const uri = process.env.MONGO;
 
 mongoose.connect(uri);
 app.listen(port, () => {
