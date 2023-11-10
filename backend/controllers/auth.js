@@ -1,6 +1,6 @@
 const User = require("../models/user");
 const bcryptjs = require("bcryptjs");
-const jwt = require("./jsonwebtoken");
+const jwt = require("jsonwebtoken");
 const { errorHandler } = require("../utils/error");
 
 const signUp = async (req, res, next) => {
@@ -20,9 +20,6 @@ const signUp = async (req, res, next) => {
 const signIn = async (req, res, next) => {
   const { email, password } = req.body;
 
-  // const hashedPassword = bcryptjs.hashSync(password, 10);
-  // const newUser = new User({ username, email, password: hashedPassword });
-
   try {
     const validUser = await User.findOne({ email });
     if (!validUser) return next(errorHandler(404, "User not found"));
@@ -32,12 +29,7 @@ const signIn = async (req, res, next) => {
     const { password: hashedPassword, ...data } = validUser._doc;
     const expiryDate = new Date(Date.now() + 360000);
     res
-      .cookies(
-        "access_token",
-        token,
-        { httpOnly: true },
-        { expiry: expiryDate }
-      )
+      .cookie("access_token", token, { httpOnly: true }, { expiry: expiryDate })
       .status(200)
       .json(data);
   } catch (error) {
