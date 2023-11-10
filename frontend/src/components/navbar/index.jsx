@@ -9,11 +9,11 @@ import logo from "../../assets/logo/logo.png";
 // import dinner from "../../assets/images/dinner.png";
 // import snack from "../../assets/images/snack.png";
 
-import "./index.css";
 import { Link } from "react-router-dom";
 import { SubscriptionContext } from "../../context/SubscriptionContext";
 import SearchBar from "./SearchBar";
 
+import "./index.css";
 // function classNames(...classes) {
 //   return classes.filter(Boolean).join(" ");
 // }
@@ -121,9 +121,12 @@ export default function Navbar({ setIsCheckout }) {
               {subscriptionData.length}
             </div>
           </div>{" "}
-          <a href="/" className="text-sm font-semibold leading-6 text-gray-900">
+          <Link
+            to="/login"
+            className="text-sm font-semibold leading-6 text-gray-900"
+          >
             Log in <span aria-hidden="true">&rarr;</span>
-          </a>
+          </Link>
         </div>
       </nav>
       <Dialog

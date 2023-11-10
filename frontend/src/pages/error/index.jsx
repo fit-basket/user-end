@@ -48,7 +48,7 @@ export default function Error() {
         <footer className="flex-shrink-0 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
           <nav className="flex justify-center space-x-4">
             <a
-              href="#"
+              href="/"
               className="text-sm font-medium text-gray-500 hover:text-gray-600"
             >
               Contact Support
@@ -58,7 +58,7 @@ export default function Error() {
               aria-hidden="true"
             />
             <a
-              href="#"
+              href="/"
               className="text-sm font-medium text-gray-500 hover:text-gray-600"
             >
               Status
@@ -68,7 +68,7 @@ export default function Error() {
               aria-hidden="true"
             />
             <a
-              href="#"
+              href="/"
               className="text-sm font-medium text-gray-500 hover:text-gray-600"
             >
               Twitter

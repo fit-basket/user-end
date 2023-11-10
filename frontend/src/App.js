@@ -17,14 +17,14 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="login" element={<Auth />} />
-          <Route path="signup" element={<User />} />
-          <Route path="partner">
-            <Route path="signup" element={<Partner />} />
-          </Route>
           <Route path="plans" element={<Plans />} />
           <Route path="pastry-board" element={<PastryBoard />} />
           <Route path="*" element={<Error />} />
+        </Route>
+        <Route path="login" element={<Auth />} />
+        <Route path="signup" element={<User />} />
+        <Route path="partner">
+          <Route path="signup" element={<Partner />} />
         </Route>
       </Routes>
     </div>
