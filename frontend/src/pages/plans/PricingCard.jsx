@@ -51,7 +51,7 @@ function PricingCard({ head, price, desc, isChecked, features, id }) {
           //   subscriptionData.includes(id)
           //     ? "bg-danger-main hover:bg-danger-dark "
           // :
-          "bg-button-main hover:bg-button-light "
+          "bg-red-500 hover:bg-button-light "
         }`}
       >
         {subscriptionData.includes(id) ? "Remove" : "Add"}

@@ -1,23 +1,50 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../../assets/logo/logo.png";
 import { useState } from "react";
 import axios from "../../../utils/axiosConfig";
+import { ButtonLoader } from "../../../components/loader";
+import {
+  signInStart,
+  signInSuccess,
+  signInFailure,
+} from "../../../redux/user/userSlice";
+
+import { useDispatch, useSelector } from "react-redux";
+import { ErrorNotification } from "../../../components/notification";
 
 export default function Auth() {
+  // misc
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { error, loading } = useSelector((state) => state.user);
+
+  // state and variables
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
 
+  // func
   const handleUserData = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post("/auth/signin", { ...user }).then((data) => {
-      console.log("RES", data);
-    });
+    dispatch(signInStart());
+    axios
+      .post("/auth/signin", { ...user })
+      .then((res) => {
+        if (res.data.success) {
+          dispatch(signInSuccess(res.data.data));
+          navigate("/");
+        } else {
+          dispatch(signInFailure(res.data.message));
+        }
+      })
+      .catch((error) => {
+        dispatch(signInFailure(error.message));
+      });
   };
 
   return (
@@ -34,6 +61,7 @@ export default function Auth() {
 
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
           <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+            {error ? <ErrorNotification message={error} /> : null}
             <form className="space-y-6" action="#" method="POST">
               <div>
                 <label
@@ -107,9 +135,10 @@ export default function Auth() {
                 <button
                   type="button"
                   onClick={handleSubmit}
-                  className="block w-full rounded px-12 py-3 text-sm font-bold  
+                  className="flex justify-center items-center w-full rounded px-12 py-3 text-sm font-bold  
                   text-white  dark:text-white  dark:focus:ring-button-dark bg-button-main hover:bg-button-light"
                 >
+                  {loading ? <ButtonLoader /> : null}
                   Sign in
                 </button>
               </div>

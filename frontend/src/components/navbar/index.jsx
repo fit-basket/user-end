@@ -1,26 +1,54 @@
 import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { Dialog, Popover } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { ShoppingCartIcon } from "@heroicons/react/20/solid";
 
-import logo from "../../assets/logo/logo.png";
-// import breakfast from "../../assets/images/breakfast.png";
-// import lunch from "../../assets/images/lunch.png";
-// import dinner from "../../assets/images/dinner.png";
-// import snack from "../../assets/images/snack.png";
-
-import { Link } from "react-router-dom";
+import { signOut } from "../../redux/user/userSlice";
+import axios from "../../utils/axiosConfig";
 import { SubscriptionContext } from "../../context/SubscriptionContext";
 import SearchBar from "./SearchBar";
+import logo from "../../assets/logo/logo.png";
 
 import "./index.css";
-// function classNames(...classes) {
-//   return classes.filter(Boolean).join(" ");
-// }
+import ConfirmationModal from "../modals/ConfirmationModal";
+import { modalText } from "../../constants/modalText";
 
 export default function Navbar({ setIsCheckout }) {
+  // misc
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { logOutText } = modalText;
+
+  // state and variables
+  const [open, setOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { subscriptionData } = useContext(SubscriptionContext);
+
+  // func
+
+  // handle Modal Open
+  const handleModal = () => {
+    setOpen(true);
+  };
+
+  // Sign out function
+  const handleSignout = (e) => {
+    e.preventDefault();
+    axios
+      .get("/auth/signout")
+      .then((res) => {
+        if (res.data.success) {
+          dispatch(signOut());
+          navigate("/login");
+        }
+        setOpen(false);
+      })
+      .catch((error) => {
+        console.log("Error: ", error);
+      });
+  };
 
   return (
     <header className="bg-transaparent">
@@ -29,9 +57,7 @@ export default function Navbar({ setIsCheckout }) {
         aria-label="Global"
       >
         <Link to="/" className="flex lg:flex-1">
-          {/* <a href="#" className="-m-1.5 p-1.5"> */}
           <img className="h-8 w-auto logo" src={logo} alt="" />
-          {/* </a> */}
         </Link>
         <div className="flex lg:hidden">
           <button
@@ -117,16 +143,16 @@ export default function Navbar({ setIsCheckout }) {
               className="h-5 w-5 flex-none text-gray-400"
               aria-hidden="true"
             />
-            <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-danger-main border-2 border-white rounded-full -top-3 -right-4 dark:border-gray-900">
+            <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-400 border-2 border-white rounded-full -top-3 -right-4 dark:border-gray-900">
               {subscriptionData.length}
             </div>
           </div>{" "}
-          <Link
-            to="/login"
-            className="text-sm font-semibold leading-6 text-gray-900"
+          <div
+            onClick={handleModal}
+            className="text-sm cursor-pointer font-semibold leading-6 text-gray-900"
           >
-            Log in <span aria-hidden="true">&rarr;</span>
-          </Link>
+            Log out <span aria-hidden="true">&rarr;</span>
+          </div>
         </div>
       </nav>
       <Dialog
@@ -211,21 +237,28 @@ export default function Navbar({ setIsCheckout }) {
                     className="h-5 w-5 flex-none text-gray-400"
                     aria-hidden="true"
                   />
-                  <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-danger-main border-2 border-white rounded-full -top-2 left-4 dark:border-gray-900">
+                  <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-400 border-2 border-white rounded-full -top-2 left-4 dark:border-gray-900">
                     {subscriptionData.length}
                   </div>
                 </div>{" "}
-                <a
-                  href="/"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                <div
+                  onClick={handleModal}
+                  className="-mx-3 block cursor-pointer rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
-                  Log in
-                </a>
+                  Log out
+                </div>
               </div>
             </div>
           </div>
         </Dialog.Panel>
       </Dialog>
+      <ConfirmationModal
+        setOpen={setOpen}
+        open={open}
+        confirm={handleSignout}
+        title={logOutText.title}
+        message={logOutText.message}
+      />
     </header>
   );
 }

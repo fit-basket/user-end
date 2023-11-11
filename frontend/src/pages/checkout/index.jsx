@@ -97,7 +97,7 @@ export default function Checkout({ isCheckout, setIsCheckout }) {
                                           <div className="flex">
                                             <button
                                               type="button"
-                                              className="font-medium text-danger-main hover:text-danger-dark"
+                                              className="font-medium text-red-500 hover:text-red-500"
                                               onClick={() => {
                                                 handlePlanUpdate(id, price);
                                               }}
@@ -140,7 +140,8 @@ export default function Checkout({ isCheckout, setIsCheckout }) {
                       <div className="mt-6">
                         <Link
                           to="/"
-                          className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                          className="flex justify-center items-center w-full rounded px-12 py-3 text-sm font-bold  
+                          text-white  dark:text-white  dark:focus:ring-button-dark bg-button-main hover:bg-button-light"
                         >
                           Checkout
                         </Link>
