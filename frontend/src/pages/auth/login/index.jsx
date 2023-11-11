@@ -10,12 +10,13 @@ import {
 } from "../../../redux/user/userSlice";
 
 import { useDispatch, useSelector } from "react-redux";
+import { ErrorNotification } from "../../../components/notification";
 
 export default function Auth() {
   // misc
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { loading } = useSelector((state) => state.user);
+  const { error, loading } = useSelector((state) => state.user);
 
   // state and variables
   const [user, setUser] = useState({
@@ -35,12 +36,14 @@ export default function Auth() {
       .post("/auth/signin", { ...user })
       .then((res) => {
         if (res.data.success) {
-          dispatch(signInSuccess(res.data.user));
+          dispatch(signInSuccess(res.data.data));
           navigate("/");
+        } else {
+          dispatch(signInFailure(res.data.message));
         }
       })
       .catch((error) => {
-        dispatch(signInFailure(error));
+        dispatch(signInFailure(error.message));
       });
   };
 
@@ -58,6 +61,7 @@ export default function Auth() {
 
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
           <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+            {error ? <ErrorNotification message={error} /> : null}
             <form className="space-y-6" action="#" method="POST">
               <div>
                 <label

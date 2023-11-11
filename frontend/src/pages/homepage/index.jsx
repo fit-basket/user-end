@@ -43,7 +43,7 @@ function Home() {
                 </Link>
 
                 <Link
-                  className="block w-full rounded px-12 py-3 text-sm font-bold text-red-600 shadow hover:text-red-700 focus:outline-none focus:ring active:text-button-main sm:w-auto"
+                  className="block w-full rounded px-12 py-3 text-sm font-bold  shadow hover:text-button-main focus:outline-none focus:ring active:text-button-main sm:w-auto"
                   to="/partner/signup"
                 >
                   Join as a Purplepreneur
