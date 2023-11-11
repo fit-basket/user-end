@@ -4,19 +4,12 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { ShoppingCartIcon } from "@heroicons/react/20/solid";
 
 import logo from "../../assets/logo/logo.png";
-// import breakfast from "../../assets/images/breakfast.png";
-// import lunch from "../../assets/images/lunch.png";
-// import dinner from "../../assets/images/dinner.png";
-// import snack from "../../assets/images/snack.png";
 
 import { Link } from "react-router-dom";
 import { SubscriptionContext } from "../../context/SubscriptionContext";
 import SearchBar from "./SearchBar";
 
 import "./index.css";
-// function classNames(...classes) {
-//   return classes.filter(Boolean).join(" ");
-// }
 
 export default function Navbar({ setIsCheckout }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -29,9 +22,7 @@ export default function Navbar({ setIsCheckout }) {
         aria-label="Global"
       >
         <Link to="/" className="flex lg:flex-1">
-          {/* <a href="#" className="-m-1.5 p-1.5"> */}
           <img className="h-8 w-auto logo" src={logo} alt="" />
-          {/* </a> */}
         </Link>
         <div className="flex lg:hidden">
           <button
@@ -215,12 +206,12 @@ export default function Navbar({ setIsCheckout }) {
                     {subscriptionData.length}
                   </div>
                 </div>{" "}
-                <a
-                  href="/"
+                <Link
+                  to="/login"
                   className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Log in
-                </a>
+                </Link>
               </div>
             </div>
           </div>

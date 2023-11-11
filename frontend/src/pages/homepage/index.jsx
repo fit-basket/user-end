@@ -8,8 +8,8 @@ function Home() {
   const [shops, setShops] = useState([]);
 
   useEffect(() => {
-    axios.get("/shops").then((data) => {
-      setShops(data.data);
+    axios.get("/shops").then((response) => {
+      setShops(response.data.data);
     });
   }, []);
 

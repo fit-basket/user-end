@@ -1,14 +1,21 @@
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../../assets/logo/logo.png";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import axios from "../../../utils/axiosConfig";
 import { ButtonLoader } from "../../../components/loader";
-import { LoadingContext } from "../../../context/LoadingContext";
+import {
+  signInStart,
+  signInSuccess,
+  signInFailure,
+} from "../../../redux/user/userSlice";
+
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Auth() {
   // misc
   const navigate = useNavigate();
-  const { isLoading, setIsLoading } = useContext(LoadingContext);
+  const dispatch = useDispatch();
+  const { loading } = useSelector((state) => state.user);
 
   // state and variables
   const [user, setUser] = useState({
@@ -23,20 +30,17 @@ export default function Auth() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setIsLoading(true);
+    dispatch(signInStart());
     axios
       .post("/auth/signin", { ...user })
       .then((res) => {
         if (res.data.success) {
-          setIsLoading(false);
+          dispatch(signInSuccess(res.data.user));
           navigate("/");
-        } else {
-          setIsLoading(false);
         }
       })
       .catch((error) => {
-        setIsLoading(false);
-        console.error("Error:", error);
+        dispatch(signInFailure(error));
       });
   };
 
@@ -130,7 +134,7 @@ export default function Auth() {
                   className="flex justify-center items-center w-full rounded px-12 py-3 text-sm font-bold  
                   text-white  dark:text-white  dark:focus:ring-button-dark bg-button-main hover:bg-button-light"
                 >
-                  {isLoading ? <ButtonLoader /> : null}
+                  {loading ? <ButtonLoader /> : null}
                   Sign in
                 </button>
               </div>

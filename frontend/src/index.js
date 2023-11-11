@@ -5,16 +5,17 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router } from "react-router-dom";
 import { SubscriptionContextProvider } from "./context/SubscriptionContext";
-import { LoadingContextProvider } from "./context/LoadingContext";
+import { store } from "./redux/store";
+import { Provider } from "react-redux";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Router>
       <SubscriptionContextProvider>
-        <LoadingContextProvider>
+        <Provider store={store}>
           <App />
-        </LoadingContextProvider>
+        </Provider>
       </SubscriptionContextProvider>
     </Router>
   </React.StrictMode>

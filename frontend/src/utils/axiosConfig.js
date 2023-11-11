@@ -1,8 +1,9 @@
 // axiosConfig.js
 import axios from "axios";
+import baseUrl from "./base";
 
 const instance = axios.create({
-  baseURL: "https://the-purple-mango.onrender.com/api", // Replace with your actual base URL
+  baseURL: baseUrl,
 });
 
 export default instance;
