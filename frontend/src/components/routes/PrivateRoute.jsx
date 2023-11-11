@@ -11,7 +11,7 @@ const PrivateRoute = ({ element: Element, ...props }) => {
       // Redirect to the login page if not authenticated
       navigate("/login");
     }
-  }, [currentUser]);
+  }, [currentUser, navigate]);
 
   if (!currentUser) {
     return null; // Render nothing while the navigation occurs
