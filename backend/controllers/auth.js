@@ -31,7 +31,7 @@ const signIn = async (req, res, next) => {
     res
       .cookie("access_token", token, { httpOnly: true }, { expiry: expiryDate })
       .status(200)
-      .json(data);
+      .json({ success: true, user: data });
   } catch (error) {
     next(error);
   }

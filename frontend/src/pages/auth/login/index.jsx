@@ -1,23 +1,43 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../../assets/logo/logo.png";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import axios from "../../../utils/axiosConfig";
+import { ButtonLoader } from "../../../components/loader";
+import { LoadingContext } from "../../../context/LoadingContext";
 
 export default function Auth() {
+  // misc
+  const navigate = useNavigate();
+  const { isLoading, setIsLoading } = useContext(LoadingContext);
+
+  // state and variables
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
 
+  // func
   const handleUserData = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post("/auth/signin", { ...user }).then((data) => {
-      console.log("RES", data);
-    });
+    setIsLoading(true);
+    axios
+      .post("/auth/signin", { ...user })
+      .then((res) => {
+        if (res.data.success) {
+          setIsLoading(false);
+          navigate("/");
+        } else {
+          setIsLoading(false);
+        }
+      })
+      .catch((error) => {
+        setIsLoading(false);
+        console.error("Error:", error);
+      });
   };
 
   return (
@@ -107,9 +127,10 @@ export default function Auth() {
                 <button
                   type="button"
                   onClick={handleSubmit}
-                  className="block w-full rounded px-12 py-3 text-sm font-bold  
+                  className="flex justify-center items-center w-full rounded px-12 py-3 text-sm font-bold  
                   text-white  dark:text-white  dark:focus:ring-button-dark bg-button-main hover:bg-button-light"
                 >
+                  {isLoading ? <ButtonLoader /> : null}
                   Sign in
                 </button>
               </div>
