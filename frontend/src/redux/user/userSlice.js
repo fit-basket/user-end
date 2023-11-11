@@ -6,14 +6,14 @@ const initialState = {
   error: false,
 };
 
-const getToken = () => {
-  const authToken = document.cookie
-    //   console.log("AUTHHHH", authToken);
-    .split("; ")
-    .find((row) => row.startsWith("access_token="))
-    .split("=")[1];
-  localStorage.setItem("authToken", authToken);
-};
+// const getToken = () => {
+//   const authToken = document.cookie
+//     //   console.log("AUTHHHH", authToken);
+//     .split("; ")
+//     .find((row) => row.startsWith("access_token="))
+//     .split("=")[1];
+//   localStorage.setItem("authToken", authToken);
+// };
 
 export const counterSlice = createSlice({
   name: "user",
@@ -26,7 +26,7 @@ export const counterSlice = createSlice({
       state.currentUser = action.payload;
       state.loading = false;
       state.error = false;
-      getToken();
+      //   getToken();
     },
     signInFailure: (state, action) => {
       state.loading = false;
