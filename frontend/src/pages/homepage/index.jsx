@@ -4,7 +4,6 @@ import ImageSlider from "../../components/slider";
 import axios from "../../utils/axiosConfig";
 
 function Home() {
-  // const shops = [plant, flower, salad, brownie, donut, plant, plant, plant];
   const [shops, setShops] = useState([]);
 
   useEffect(() => {

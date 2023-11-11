@@ -12,14 +12,11 @@ export default function User() {
 
   const handleUserData = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
-    console.log("USER", user);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post("/auth/signup", { ...user }).then((data) => {
-      console.log("RES", data);
-    });
+    axios.post("/auth/signup", { ...user }).then((data) => {});
   };
 
   return (
