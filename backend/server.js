@@ -2,7 +2,8 @@ const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
 
-const shopRoutes = require("./routes/shop");
+const shopRoutes = require("./routes/user/shop");
+const productRoutes = require("./routes/admin/product");
 const authRoutes = require("./routes/auth");
 const mongoose = require("mongoose");
 
@@ -21,6 +22,7 @@ app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
 
+app.use("/api", productRoutes);
 app.use("/api", shopRoutes);
 app.use("/api/auth", authRoutes);
 

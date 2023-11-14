@@ -1,4 +1,4 @@
-const shopModel = require("../models/shops");
+const shopModel = require("../../models/user/shops");
 
 const getData = async (req, res) => {
   const result = await shopModel
