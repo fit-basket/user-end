@@ -13,8 +13,20 @@ import PrivateRoute from "./components/routes/PrivateRoute";
 import PublicRoute from "./components/routes/PublicRoute";
 
 import "./App.css";
+import { useEffect } from "react";
+import { signInSuccess } from "./redux/user/userSlice";
+import { useDispatch } from "react-redux";
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    let token = localStorage.getItem("authToken");
+    let data = JSON.parse(localStorage.getItem("user"));
+    if (token) {
+      dispatch(signInSuccess({ data, token }));
+    }
+  }, []);
+
   return (
     <div className="App">
       <Routes>

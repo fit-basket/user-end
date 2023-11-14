@@ -20,6 +20,7 @@ export default function Auth() {
 
   // state and variables
   const [user, setUser] = useState({
+    role: "user",
     email: "",
     password: "",
   });
@@ -36,7 +37,7 @@ export default function Auth() {
       .post("/auth/signin", { ...user })
       .then((res) => {
         if (res.data.success) {
-          dispatch(signInSuccess(res.data.data));
+          dispatch(signInSuccess(res.data));
           navigate("/");
         } else {
           dispatch(signInFailure(res.data.message));

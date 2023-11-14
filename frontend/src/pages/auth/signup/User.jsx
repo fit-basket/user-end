@@ -5,6 +5,7 @@ import axios from "../../../utils/axiosConfig";
 
 export default function User() {
   const [user, setUser] = useState({
+    role: "user",
     username: "",
     email: "",
     password: "",

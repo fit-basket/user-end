@@ -4,10 +4,10 @@ const jwt = require("jsonwebtoken");
 const { errorHandler } = require("../utils/error");
 
 const signUp = async (req, res, next) => {
-  const { username, email, password } = req.body;
+  const { username, email, password, role } = req.body;
 
   const hashedPassword = bcryptjs.hashSync(password, 10);
-  const newUser = new User({ username, email, password: hashedPassword });
+  const newUser = new User({ username, email, password: hashedPassword, role });
 
   try {
     await newUser.save();
@@ -20,22 +20,32 @@ const signUp = async (req, res, next) => {
 };
 
 const signIn = async (req, res, next) => {
-  const { email, password } = req.body;
+  const { email, password, role } = req.body;
 
   try {
     const validUser = await User.findOne({ email });
     if (!validUser) return next(errorHandler(404, "User not found"));
+
+    // Check if the roles match
+    if (validUser.role !== role) {
+      return next(errorHandler(403, "Invalid Role for Sign-In"));
+    }
 
     const validPassword = bcryptjs.compareSync(password, validUser.password);
     if (!validPassword) return next(errorHandler(401, "Invalid Password"));
 
     const token = jwt.sign({ id: validUser._id }, process.env.JWT_SECRET);
     const { password: hashedPassword, ...data } = validUser._doc;
-    const expiryDate = new Date(Date.now() + 3600000);
+    // const expiryDate = new Date(Date.now() + 3600000);
     res
-      .cookie("access_token", token, { httpOnly: true, expires: expiryDate })
+      // .cookie("access_token", token, { httpOnly: true, expires: expiryDate })
       .status(200)
-      .json({ success: true, data: data, message: "Signed in Successfully" });
+      .json({
+        success: true,
+        data: data,
+        token,
+        message: "Signed in Successfully",
+      });
   } catch (error) {
     next(error);
   }

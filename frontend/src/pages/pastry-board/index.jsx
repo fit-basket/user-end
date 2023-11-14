@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import Product from "../../components/products";
 import { cakeList } from "../../constants/products";
-import Modal from "../../components/modals";
+import Modal from "../../components/modals/CakeModal";
 
 import cake from "../../assets/images/blur_edges.jpg";
 import down from "../../assets/images/down.gif";
