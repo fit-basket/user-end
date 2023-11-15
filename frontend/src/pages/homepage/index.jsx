@@ -22,7 +22,7 @@ function Home() {
             <div className="mx-auto max-w-xl text-center">
               <h1 className="text-3xl font-extrabold sm:text-5xl">
                 Homegrown Goodness,
-                <strong className="font-extrabold text-button-main sm:block">
+                <strong className="font-extrabold text-button-light sm:block">
                   Beyond Your Door.
                 </strong>
               </h1>

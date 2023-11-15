@@ -21,6 +21,10 @@ const productSchema = new mongoose.Schema(
         type: String,
       },
     ],
+    business_id: {
+      type: String,
+      required: true,
+    },
   },
   { timestamps: true }
 );

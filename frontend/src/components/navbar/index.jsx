@@ -37,7 +37,7 @@ export default function Navbar({ setIsCheckout }) {
   const handleSignout = (e) => {
     e.preventDefault();
     axios
-      .get("/auth/signout")
+      .get("/auth/user/signout")
       .then((res) => {
         if (res.data.success) {
           dispatch(signOut());

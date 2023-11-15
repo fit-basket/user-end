@@ -4,7 +4,8 @@ require("dotenv").config();
 
 const shopRoutes = require("./routes/user/shop");
 const productRoutes = require("./routes/admin/product");
-const authRoutes = require("./routes/auth");
+const userAuthRoutes = require("./routes/user/auth");
+const adminAuthRoutes = require("./routes/admin/auth");
 const mongoose = require("mongoose");
 
 const app = express();
@@ -24,7 +25,8 @@ app.listen(port, () => {
 
 app.use("/api", productRoutes);
 app.use("/api", shopRoutes);
-app.use("/api/auth", authRoutes);
+app.use("/api/auth/user", userAuthRoutes);
+app.use("/api/auth/admin", adminAuthRoutes);
 
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;

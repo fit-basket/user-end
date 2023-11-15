@@ -18,7 +18,7 @@ export default function User() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post("/auth/signup", { ...user }).then((data) => {
+    axios.post("/auth/user/signup", { ...user }).then((data) => {
       console.log("RES", data);
     });
   };

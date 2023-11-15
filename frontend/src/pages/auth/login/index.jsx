@@ -34,7 +34,7 @@ export default function Auth() {
     e.preventDefault();
     dispatch(signInStart());
     axios
-      .post("/auth/signin", { ...user })
+      .post("/auth/user/signin", { ...user })
       .then((res) => {
         if (res.data.success) {
           dispatch(signInSuccess(res.data));

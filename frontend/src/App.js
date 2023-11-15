@@ -5,17 +5,16 @@ import Layout from "./components/layout";
 
 import PastryBoard from "./pages/pastry-board";
 import Home from "./pages/homepage";
-import Auth from "./pages/auth/login";
-import Partner from "./pages/auth/signup/Partner";
-import User from "./pages/auth/signup/User";
+import Login from "./pages/auth/login";
+import Signup from "./pages/auth/signup";
 import Error from "./pages/error";
 import PrivateRoute from "./components/routes/PrivateRoute";
 import PublicRoute from "./components/routes/PublicRoute";
 
-import "./App.css";
 import { useEffect } from "react";
 import { signInSuccess } from "./redux/user/userSlice";
 import { useDispatch } from "react-redux";
+import "./App.css";
 
 function App() {
   const dispatch = useDispatch();
@@ -41,18 +40,12 @@ function App() {
         </Route>
         <Route
           path="login"
-          element={<PublicRoute element={Auth} restricted={true} />}
+          element={<PublicRoute element={Login} restricted={true} />}
         />
         <Route
           path="signup"
-          element={<PublicRoute element={User} restricted={true} />}
+          element={<PublicRoute element={Signup} restricted={true} />}
         />
-        <Route path="partner">
-          <Route
-            path="signup"
-            element={<PublicRoute element={Partner} restricted={true} />}
-          />
-        </Route>
       </Routes>
     </div>
   );
