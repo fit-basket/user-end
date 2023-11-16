@@ -20,7 +20,6 @@ export default function Auth() {
 
   // state and variables
   const [user, setUser] = useState({
-    role: "user",
     email: "",
     password: "",
   });

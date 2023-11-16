@@ -1,25 +1,26 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../../assets/logo/logo.png";
 import { useState } from "react";
 import axios from "../../../utils/axiosConfig";
 
 export default function User() {
+  const navigate = useNavigate();
   const [user, setUser] = useState({
-    role: "user",
-    username: "",
+    name: "",
     email: "",
     password: "",
+    phone: "",
+    address: "",
   });
 
   const handleUserData = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
-    console.log("USER", user);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     axios.post("/auth/user/signup", { ...user }).then((data) => {
-      console.log("RES", data);
+      navigate("/login");
     });
   };
 
@@ -40,18 +41,18 @@ export default function User() {
             <form className="space-y-6" action="#" method="POST">
               <div>
                 <label
-                  htmlFor="email"
+                  htmlFor="name"
                   className="block text-start text-sm font-medium text-gray-700"
                 >
                   Name
                 </label>
                 <div className="mt-1">
                   <input
-                    id="username"
-                    name="username"
+                    id="name"
+                    name="name"
                     type="text"
                     autoComplete="name"
-                    value={user.username}
+                    value={user.name}
                     onChange={handleUserData}
                     required
                     className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
