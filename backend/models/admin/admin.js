@@ -27,7 +27,7 @@ const adminSchema = new mongoose.Schema(
     address: {
       type: String,
     },
-    type: {
+    businessType: {
       type: String,
       required: true,
     },

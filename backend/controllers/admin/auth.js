@@ -4,8 +4,16 @@ const { errorHandler } = require("../../utils/error");
 const Admin = require("../../models/admin/admin");
 
 const signUp = async (req, res, next) => {
-  const { name, email, password, businessName, type, phone, image, address } =
-    req.body;
+  const {
+    name,
+    email,
+    password,
+    businessName,
+    businessType,
+    phone,
+    image,
+    address,
+  } = req.body;
 
   const hashedPassword = bcryptjs.hashSync(password, 10);
   const newAdmin = new Admin({
@@ -13,7 +21,7 @@ const signUp = async (req, res, next) => {
     email,
     password: hashedPassword,
     businessName,
-    type,
+    businessType,
     phone,
     image,
     address,
@@ -33,7 +41,7 @@ const signIn = async (req, res, next) => {
   const { email, password } = req.body;
 
   try {
-    const validAdmin = await User.findOne({ email });
+    const validAdmin = await Admin.findOne({ email });
     if (!validAdmin) return next(errorHandler(404, "User not found"));
 
     const validPassword = bcryptjs.compareSync(password, validAdmin.password);

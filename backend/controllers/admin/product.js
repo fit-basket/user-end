@@ -12,7 +12,7 @@ const getProducts = async (req, res) => {
 };
 
 const createProduct = async (req, res) => {
-  console.log("first", req);
+  console.log("first", req.body);
   const product = req.body;
   const result = await productModal.create(product);
 

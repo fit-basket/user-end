@@ -2,9 +2,13 @@ import { Link, useNavigate } from "react-router-dom";
 import logo from "../../../assets/logo/logo.png";
 import { useState } from "react";
 import axios from "../../../utils/axiosConfig";
+import { ButtonLoader } from "../../../components/loader";
+import { useSelector } from "react-redux";
 
 export default function User() {
   const navigate = useNavigate();
+  const { loading } = useSelector((state) => state.user);
+
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -134,7 +138,8 @@ export default function User() {
                   className="block w-full rounded px-12 py-3 text-sm font-bold  
                   text-white  dark:text-white  dark:focus:ring-button-dark bg-button-main hover:bg-button-light"
                 >
-                  Sign in
+                  {loading ? <ButtonLoader /> : null}
+                  Sign up
                 </button>
               </div>
             </form>

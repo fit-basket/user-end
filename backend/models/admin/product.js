@@ -6,27 +6,33 @@ const productSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    desc: {
+    description: {
       type: String,
     },
     image: {
       type: String,
     },
+    price: {
+      type: String,
+      required: true,
+    },
     category: {
       type: String,
       required: true,
     },
-    subCategories: [
-      {
-        type: String,
-      },
-    ],
-    business_id: {
+    subCategories: {
+      type: String,
+    },
+    businessId: {
       type: String,
       required: true,
     },
-  },
-  { timestamps: true }
+    businessType: {
+      type: String,
+      required: true,
+    },
+  }
+  // { timestamps: true }
 );
 
 const Product = mongoose.model("Product", productSchema);
