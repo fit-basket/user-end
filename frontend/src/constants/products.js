@@ -7,7 +7,7 @@ export const cakeList = [
   {
     id: 1,
     name: "Vanilla Bento Cake",
-    imageSrc: vanillaBento,
+    image: vanillaBento,
     imageAlt: "Vanilla Cake",
     price: "300",
     color: "5 options",
@@ -16,7 +16,7 @@ export const cakeList = [
   {
     id: 2,
     name: "Strawberry Bento Cake",
-    imageSrc: strawberryBento,
+    image: strawberryBento,
     imageAlt: "Strawberry Bento Cake",
     price: "330",
     color: "4 options",
@@ -25,7 +25,7 @@ export const cakeList = [
   {
     id: 3,
     name: "Red Velvet Bento Cake",
-    imageSrc: redVelvetBento,
+    image: redVelvetBento,
     imageAlt: "Red Velvet Bento Cake",
     price: "330",
     color: "5 options",
@@ -34,7 +34,7 @@ export const cakeList = [
   {
     id: 4,
     name: "Chocolate Bento Cake",
-    imageSrc: chocoBento,
+    image: chocoBento,
     imageAlt: "Chocolate Bento Cake",
     price: "320",
     color: "5 options",

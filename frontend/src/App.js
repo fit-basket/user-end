@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Plans from "./pages/plans";
 import Layout from "./components/layout";
 
-import PastryBoard from "./pages/pastry-board";
+import BusinessLanding from "./pages/business-landing";
 import Home from "./pages/homepage";
 import Login from "./pages/auth/login";
 import Signup from "./pages/auth/signup";
@@ -32,12 +32,16 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<PrivateRoute element={Home} />} />
           <Route path="plans" element={<PrivateRoute element={Plans} />} />
-          <Route
-            path="pastry-board"
-            element={<PrivateRoute element={PastryBoard} />}
-          />
+
           <Route path="*" element={<Error />} />
+          <Route
+            path="/business-profile/:businessName/:id"
+            element={
+              <PublicRoute element={BusinessLanding} restricted={false} />
+            }
+          />
         </Route>
+
         <Route
           path="login"
           element={<PublicRoute element={Login} restricted={true} />}

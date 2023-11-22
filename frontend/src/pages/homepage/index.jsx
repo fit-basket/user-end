@@ -8,7 +8,7 @@ function Home() {
   const [shops, setShops] = useState([]);
 
   useEffect(() => {
-    axios.get("/shops").then((response) => {
+    axios.get("/user/shops").then((response) => {
       setShops(response.data.data);
     });
   }, []);
@@ -61,7 +61,7 @@ function Home() {
         </h2>
         <ImageSlider images={shops} maxImage={5} imageType="circle" />
       </div>
-      <div className="container mx-auto px-4  border-b">
+      {/* <div className="container mx-auto px-4  border-b">
         <h2 className="text-3xl mt-4 text-start purple_subheading" id="cakes">
           Browse Food
         </h2>
@@ -72,7 +72,7 @@ function Home() {
           Browse Crafts
         </h2>
         <ImageSlider images={shops} maxImage={4} imageType="rect" />
-      </div>
+      </div> */}
     </div>
   );
 }

@@ -1,4 +1,4 @@
-const shopModel = require("../../models/user/shops");
+const shopModel = require("../../models/admin/admin");
 
 const getData = async (req, res) => {
   const result = await shopModel
@@ -11,11 +11,11 @@ const getData = async (req, res) => {
     });
 };
 
-const createShop = async (req, res) => {
-  const shop = req.body;
-  const result = await shopModel.create(shop);
+// const createShop = async (req, res) => {
+//   const shop = req.body;
+//   const result = await shopModel.create(shop);
 
-  res.status(200).json({ status: "ok" });
-};
+//   res.status(200).json({ status: "ok" });
+// };
 
-module.exports = { getData, createShop };
+module.exports = { getData };

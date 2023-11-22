@@ -6,10 +6,12 @@ const {
   getAllProducts,
   updateProduct,
   deleteProduct,
+  getProductsSortedByCategory,
 } = require("../../controllers/admin/product");
 
-router.get("/single-product/:productId", getProduct);
-router.get("/all-products/:businessId", getAllProducts);
+router.get("/single/:productId", getProduct);
+router.get("/all/:businessId", getAllProducts);
+router.get("/category/:businessId", getProductsSortedByCategory);
 router.post("/create-product", createProduct);
 router.patch("/:productId", updateProduct);
 router.delete("/:productId", deleteProduct);

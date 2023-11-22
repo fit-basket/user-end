@@ -95,12 +95,22 @@ function ImageSlider({ imageType, images, maxImage }) {
       </button>
 
       <div className="overflow-hidden w-full">
-        <div className="flex my-6 justify-center">
-          {carousalImages?.map((image, index) =>
+        <div className="flex my-6 justify-start">
+          {carousalImages?.map((data, index) =>
             imageType === "circle" ? (
-              <Circle key={index} src={image?.image} alt={image.title} />
+              <Circle
+                key={index}
+                src={data?.image}
+                alt={data.businessName}
+                data={data}
+              />
             ) : (
-              <Rect key={index} src={image?.image} alt={image.title} />
+              <Rect
+                key={index}
+                src={data?.image}
+                alt={data.businessName}
+                data={data}
+              />
             )
           )}
         </div>

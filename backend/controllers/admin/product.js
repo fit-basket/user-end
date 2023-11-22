@@ -36,6 +36,35 @@ const getAllProducts = async (req, res) => {
   }
 };
 
+const getProductsSortedByCategory = async (req, res) => {
+  const { businessId } = req.params;
+
+  try {
+    const categories = await categoryModal.find({ businessId });
+
+    const productsByCategory = {};
+
+    // Loop through each category and fetch products
+    for (const category of categories) {
+      const categoryId = category._id;
+      const categoryTitle = category.title;
+
+      // Fetch products for the current category
+      const products = await productModal.find({
+        businessId,
+        category: categoryId,
+      });
+
+      // Store fetched products in the object by category title
+      productsByCategory[categoryTitle] = products;
+    }
+
+    res.status(200).json({ success: true, data: productsByCategory });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
 const createProduct = async (req, res) => {
   const product = req.body;
   const { category, image } = product;
@@ -107,4 +136,5 @@ module.exports = {
   createProduct,
   updateProduct,
   deleteProduct,
+  getProductsSortedByCategory,
 };

@@ -25,7 +25,7 @@ app.listen(port, () => {
 });
 
 app.use("/api/products", productRoutes);
-app.use("/api", shopRoutes);
+app.use("/api/user", shopRoutes);
 app.use("/api", categoryRoutes);
 app.use("/api/auth/user", userAuthRoutes);
 app.use("/api/auth/admin", adminAuthRoutes);
